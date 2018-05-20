@@ -4,7 +4,7 @@ const Hapi=require('hapi');
 
 // Create a server with a host and port
 const server=Hapi.server({
-    host:'0.0.0.0',
+    host:'localhost',
     port:8800
 });
 
@@ -29,7 +29,7 @@ server.route({
 		//const assert = require('assert');
 		 
 		// Connection URL
-		const url = 'mongodb://0.0.0.0:27017';
+		const url = 'mongodb://localhost:27017';
 		 
 		// Database Name
 		const dbName = 'myproject';
@@ -38,16 +38,14 @@ server.route({
 		MongoClient.connect(url, function(err, client) {
 		  //assert.equal(null, err);
 		  console.log("Connected successfully to server");
-		 if(client){
-		  let db = client.db(dbName);
-			db.collection('Persons', function (err, collection) {
-					console.log("write done");
+		 
+		  const db = client.db(dbName);
+			db.collection('Persons', function (err, collection) {				
 				collection.insert({ id: 1, firstName: 'Steve', lastName: 'Jobs' });
 				collection.insert({ id: 2, firstName: 'Bill', lastName: 'Gates' });
 				collection.insert({ id: 3, firstName: 'James', lastName: 'Bond' });
 			});
 		  client.close();
-		 }
 		});
         return 'Write Completed';
     }
