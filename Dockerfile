@@ -5,7 +5,8 @@ MAINTAINER likithjogi@gmail.com
 WORKDIR /opt
 
 # Install NPM
-RUN apt-get update && apt-get install -y sudo curl && \ #gcc g++ make 
+RUN apt-get update && apt-get install -y sudo curl && \
+#gcc g++ make  
 	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && \
 #	curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg && \
 #	sudo apt-key add - && \
