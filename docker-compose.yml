@@ -4,7 +4,7 @@ services:
     build: .
     container_name: front_app1
     volumes:
-      - .:/src1
+      - .:/opt
     ports:
       - "8080:8800"
     depends_on:
